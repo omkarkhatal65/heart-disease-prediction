@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('../assets/robert-collins-tvc5imO5pXk-unsplash.jpg');
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: red;
+            color: white;
+            position: fixed;
+            padding: 20px;
+            display: none;
+        }
+
+        .menu-item {
+            background: white;
+            color: black;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: #a92424;
+
+            .background-section {
+                width: 100%;
+                height: 400px;
+                background-image: url('c:\Users\FIS\Desktop\om1.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+
+
+            }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <!-- Registration Page -->
+    <section class="w-[calc(100vw-2rem)] max-w-[430px]">
+        <div class="flex flex-col items-center justify-center px-0 py-8 mx-auto lg:px-4 lg:py-0">
+            <div class="text-lg bg-white p-6 rounded-md">
+                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+                    <img class="w-8 h-8 mr-2" src="../assets/heartbeat_and_heart_hand_drawn_line.jpg"
+                        alt="logo">
+                    Heart Care
+                </a>
+                Introducing our innovative web application designed to assess your risk of heart disease. By analyzing your health data, our platform not only provides personalized risk evaluations but also connects you with qualified doctors for consultations. Additionally, we offer a curated selection of informative videos aimed at guiding you on preventive measures to maintain optimal heart health. 
+                <a class="block mt-6 hover:bg-gray-700 text-center text-white text-md py-2 px-4 rounded-md bg-rose-700" href="/app/developers.html">Meet our team</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const emailErr = document.querySelector('#email-error');
+        const passwordErr = document.querySelector('#password-error');
+
+        function validation(email, password) {
+            console.log(8768, email, password);
+            if (!email) {
+                emailErr.innerHTML = "Email is required"
+            } else {
+                emailErr.innerHTML = ''
+            }
+
+            if (!password) {
+                passwordErr.innerHTML = "Password is required"
+            } else {
+                passwordErr.innerHTML = ''
+            }
+
+            if (email && password) {
+                return true;
+            }
+            return;
+        }
+
+        const loginForm = document.querySelector('#login-form');
+        loginForm.addEventListener('submit', (e) => login(e))
+
+        function login(e) {
+            e.preventDefault();
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            const isValid = validation(email, password)
+
+            if (isValid) {
+                // Store user data in localStorage
+                localStorage.setItem("name", name);
+                localStorage.setItem("email", email);
+
+                window.location.href = '/app/prediction.html'
+            }
+
+        }
+
+        function logout() {
+            localStorage.clear();
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("registerPage").style.display = "block";
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -42,25 +42,37 @@ async function run() {
     my_modal_2.showModal();
     var rslt = "";
     let modalColor;
+    let msg = '';
     if (result >= 0.5) {
       rslt +=
-        "<div class='text-center'><strong>Positive</strong></div>";
-        modalColor = 'bg-red-300'
-    } else {
-      rslt +=
-        "<div class='text-center'><strong>Negative</strong></div>";
-        modalColor = 'bg-green-300'
+        `<div class='text-center'>
+        <img src="../assets/—Pngtree—broken heart icon symbol_6270104.png" />
+        </div>`;
+        modalColor = 'text-red-500'
+        msg = `Given this risk level, you should adopt preventive measures to reduce your chances of heart disease. It's important to consult with a healthcare professional to discuss your risk factors and develop a personalized plan to improve your heart health.`
+      } else {
+        rslt +=
+        `<div class='text-center'>
+        <img src="../assets/—Pngtree—3d heart with thumbs up_20454057.png" />
+        </div>`;
+        modalColor = 'text-green-500'
+        msg = `Given this risk level, it's advisable to consult with a healthcare professional for a comprehensive evaluation and to discuss preventive measures.`
     }
     const prsn = result * 100;
-    rslt += "<div class='text-center'>Probability: " + prsn.toFixed(2) + "% </div>";
+    rslt += `<div class='text-center text-black'>Your AI-based heart disease risk assessment indicates an <span class="${modalColor} font-bold text-lg">${prsn.toFixed(2)}%</span> probability of developing heart disease. ${msg}</div>`;
 
     document.getElementById("rslt-text").innerHTML = rslt;
     document.querySelector('#my_modal_2_box').classList.add(modalColor) 
   }
 
-  const profEmail = document.querySelector('#email-profile');
-  profEmail.innerHTML = localStorage.getItem('email');
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const profEmail = document.querySelector('#email-profile');
+    console.log(3434, profEmail, localStorage.getItem('email'));
+    profEmail.innerHTML = localStorage.getItem('email');
+  })
 
+  
 
 //   const analyzeBtn = document.querySelector('#analyzeBtn-btn');
 //   analyzeBtn.addEventListener('click', () => {
